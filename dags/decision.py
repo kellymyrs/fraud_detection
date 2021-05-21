@@ -7,11 +7,7 @@ from random import randint
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 
-'''
-Function that is simulating the decision of the agent
-Used read in the name of the file as flag for the requests that are processed
-Dag running in random intervals
-'''
+
 def dec():
     fake = Faker('en_US')
     request_path = os.path.join('./request', str(datetime.now().year), str(datetime.now().month), str(datetime.now().hour) + '/')

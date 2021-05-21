@@ -8,13 +8,11 @@ from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 import uuid
 
-'''
-Function that generates the input data creatiing json files with unique identifier
-Dag running in random intervals
-'''
+
 def gen_input():
     fake = Faker('en_US')
     id = uuid.uuid1()
+
     request = {'request_id': id.int, 'request_timestamp': datetime.now().timestamp(), 'longtitude': random.uniform(-180.0, 180.0), 'latitude': random.uniform(-90.0, 90.0), 'document_photo_brightness_percent': randint(0, 100), 'is_photo_in_a_photo_selfie': randint(0, 100)}
     path = os.path.join('./request', str(datetime.now().year), str(datetime.now().month), str(datetime.now().hour) + '/')
     if not os.path.exists(path):

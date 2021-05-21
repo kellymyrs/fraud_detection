@@ -9,12 +9,7 @@ import pandas as pd
 import sqlite3
 from airflow.operators.python_operator import PythonOperator
 
-'''
-Function that is simulating the prediction
-First converts the data to numerical
-Then calculates probability and used round function to get the final decision 
-Dag running in random intervals
-'''
+
 def pred():
     fake = Faker('en_US')
     request_path = os.path.join('./request', 'year=' + str(datetime.now().year), 'month=' + str(datetime.now().month), 'hour=' + str(datetime.now().hour) + '/')
